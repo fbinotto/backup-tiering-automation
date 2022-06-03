@@ -35,6 +35,8 @@ $subscriptions = Get-AzSubscription | ? State -eq 'Enabled'
 
 foreach ($sub in $subscriptions) {
 
+    Select-AzureSubscription -SubscriptionObject $sub
+
     foreach ($vault in (Get-AzRecoveryServicesVault)) {
 
 	  $retPol.DailySchedule.DurationCountInDays = 90
