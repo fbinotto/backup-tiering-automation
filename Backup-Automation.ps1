@@ -133,7 +133,7 @@ foreach ($vm in $vms) {
             }
             # if TIER-3
             'TIER-3' {			
-                Write-Output "Evaluating Silver tier..."			
+                Write-Output "Evaluating TIER-3 tier..."			
                 # and policy is not TIER-3
                 if ($policyName -ne "TIER-3") {
                     Select-AzSubscription -SubscriptionId $vm.SubscriptionId
