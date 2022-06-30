@@ -30,13 +30,13 @@ $subscriptions = Get-AzSubscription | foreach { $_.SubscriptionId }
 $query = "RecoveryServicesResources | where type in~ ('microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems')"
 
 # Execute query
-$backups = Search-AzGraph -Subscription $subscriptions -Query $query
+$backups = Search-AzGraph -Subscription $subscriptions -Query $query -First 1000
 
 # Query to get all VMs
 $query = "resources | where type in~ ('microsoft.compute/virtualmachines') | where tags.BackupTier != ''"
 
 # Execute Query
-$vms = Search-AzGraph -Subscription $subscriptions -Query $query
+$vms = Search-AzGraph -Subscription $subscriptions -Query $query -First 1000
 
 # Iterate through each VM
 foreach ($vm in $vms) {
